@@ -1,55 +1,63 @@
-var gpio = require('pigpio');
+var gpio = require('pigpio').Gpio;
 
-gpio.setMode(gpio.MODE_BCM);
+let blueled = new Gpio(18, { mode: Gpio.OUTPUT });
+let redled = new Gpio(25, { mode: Gpio.OUTPUT });
+let whiteled = new Gpio(12, { mode: Gpio.OUTPUT });
+let greenled = new Gpio(21, { mode: Gpio.OUTPUT });
 
-gpio.setup(18, gpio.DIR_OUT, setInterval.bind(null, write.bind(null, 18), 791));
-gpio.setup(25, gpio.DIR_OUT, setInterval.bind(null, write.bind(null, 25), 791));
-gpio.setup(12, gpio.DIR_OUT, setInterval.bind(null, write.bind(null, 12), 791));
-gpio.setup(21, gpio.DIR_OUT, setInterval.bind(null, write.bind(null, 21), 791));
-
+let a = 0;
 let c = 0;
 let b = false;
 
+setInterval(write, 792);
+
 function write(x) {
-    a = c;
     c = c++
-    gpio.write(x, condswitch(x), function (err) {
-        if (err) throw err;
-    });
+    blueled.digitalWrite(condswitch(18));
+    redled.digitalWrite(condswitch(25));
+    whiteled.digitalWrite(condswitch(12));
+    greenled.digitalWrite(condswitch(21));
 }
 
 function condswitch(x) {
     if (x === 12) {
-        return (b = !b);
+        if (a === 0) {
+            a = 1;
+            return 0;
+        }
+        else {
+            a = 0;
+            return 1;
+        }
     }
     if (x === 18) {
         if ((c % 2) === 0) {
-            return true;
+            return 1;
         }
         else if ((c % 5) === 0) {
-            return true;
+            return 1;
         }
         else {
-            return false;
+            return 0;
         }
     }
     if (x === 21) {
         if (Math.round(Math.sqrt(c)) === (Math.sqrt(c))) {
-            return true;
+            return 1;
         }
         else if ((c % 5) === 0) {
-            return true;
+            return 1;
         }
         else {
-            return false;
+            return 0;
         }
     }
     if (x === 25) {
         if ((c % 3) === 0) {
-            return true;
+            return 1;
         }
         else {
-            return false;
+            return 0;
         }
     }
 };
