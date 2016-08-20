@@ -9,7 +9,7 @@ let a = 0;
 let c = 0;
 let b = false;
 
-setInterval(write, (60/(190*2)));
+setInterval(write, (60/(190)));
 
 function write(x) {
     if (c < 4) {
