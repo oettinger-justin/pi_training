@@ -1,4 +1,4 @@
-var gpio = require('pigpio').Gpio;
+var Gpio = require('pigpio').Gpio;
 
 let blueled = new Gpio(18, { mode: Gpio.OUTPUT });
 let redled = new Gpio(25, { mode: Gpio.OUTPUT });
