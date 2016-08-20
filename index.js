@@ -12,13 +12,18 @@ let b = false;
 setInterval(write, 792);
 
 function write(x) {
-    c = c++
+    if (c < 4) {
+        c++;
+    }
+    else {
+        c = 0;
+    }
     blueled.digitalWrite(condswitch(18));
     redled.digitalWrite(condswitch(25));
     whiteled.digitalWrite(condswitch(12));
     greenled.digitalWrite(condswitch(21));
 }
-
+/*
 function condswitch(x) {
     if (x === 12) {
         if (a === 0) {
@@ -61,3 +66,39 @@ function condswitch(x) {
         }
     }
 };
+
+*/
+function condswitch(x) {
+    if (x === 18) {
+        if (c === 0) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    if (x === 25) {
+        if (c === 1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    if (x === 12) {
+        if (c === 2) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    if (x === 21) {
+        if (c === 3) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+}
