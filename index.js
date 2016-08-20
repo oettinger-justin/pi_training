@@ -9,7 +9,7 @@ let a = 0;
 let c = 0;
 let b = false;
 
-setInterval(write, 792);
+setInterval(write, (60/(190*2)));
 
 function write(x) {
     if (c < 4) {
@@ -23,7 +23,7 @@ function write(x) {
     whiteled.digitalWrite(condswitch(12));
     greenled.digitalWrite(condswitch(21));
 }
-/*
+
 function condswitch(x) {
     if (x === 12) {
         if (a === 0) {
@@ -67,7 +67,7 @@ function condswitch(x) {
     }
 };
 
-*/
+/*
 function condswitch(x) {
     if (x === 18) {
         if (c === 0) {
@@ -102,3 +102,4 @@ function condswitch(x) {
         }
     }
 }
+*/
