@@ -1,4 +1,4 @@
-var gpio = require('rpi-gpio');
+var gpio = require('pigpio');
 
 gpio.setMode(gpio.MODE_BCM);
 
