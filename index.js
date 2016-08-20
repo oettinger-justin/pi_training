@@ -9,15 +9,17 @@ let a = 0;
 let c = 0;
 let b = false;
 
-setInterval(write, (60/(190)));
+setInterval(write, (60000/(190)));
 
 function write(x) {
-    if (c < 4) {
+    /*if (c < 4) {
         c++;
     }
     else {
         c = 0;
     }
+    */
+    c++;
     blueled.digitalWrite(condswitch(18));
     redled.digitalWrite(condswitch(25));
     whiteled.digitalWrite(condswitch(12));
