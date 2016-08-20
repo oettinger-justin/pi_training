@@ -1,8 +1,9 @@
 var gpio = require('rpi-gpio');
 
-gpio.setup(18, gpio.DIR_OUT, write);
+gpio.setMode(gpio.MODE_BCM);
 
-setInterval(write, 2500)
+gpio.setup(18, gpio.DIR_OUT, setInterval.bind(null, write, 1000));
+
 let i = true
 
 function write() {
